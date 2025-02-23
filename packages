@@ -1,0 +1,26 @@
+xorg-server xorg-xinit ly ttf-hack ttf-font-awesome firefox #Arbitray things I use
+mpv bluez bluez-utils alsa-utils btrfs-progs #some other random utilities
+lf #file-manager
+xclip picom feh unclutter #more-utils
+nvidia-open #open source nvidia drivers muh freedum
+pulsemixer #like pavucontrol but terminal hehehehehehe
+pipewire wireplumber pipewire-pulse pipewire-alsa pipewire-jack #required for audio interfaces to work properly be it regarding pulseaudio configs jack or interfacing with alsa devices
+htop neofetch #looks aesthetics
+tlp #battery optimization
+acpilight #brightness control
+xorg-xev xbindkeys #keyboard keys mapping
+git #duh kids stop pretending we all need high priest git
+inotify-tools libnotify dunst #notifications ofcourse
+openssh #ssh
+scrot #screenshots
+asusctl power-profiles-daemon supergfxctl #asus power management related utilities, super cool combo works together most of the time unlike tlp
+cronie #cronjobs go brrt
+entr #automation
+pywal #eyecandy
+ncmpcpp mpd mpc #music
+ytfzf fzf yt-dlp ueberzug curl jq #youtube from terminal
+spotdl #download music
+nsxiv #image viewer
+zathura xournalpp #study
+timeshift #backup purposes
+polkit-gnome #gui polkit agent
