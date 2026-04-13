@@ -1,0 +1,28 @@
+#!/bin/sh
+# Pause all mpv processes via their IPC sockets
+# This script is bound to super + shift + p by default
+
+# Check if the socket directory exists
+if [ ! -d "/tmp/mpvSockets" ]; then
+    echo "Socket directory /tmp/mpvSockets does not exist"
+    exit 0
+fi
+
+# Check if there are any socket files
+if ! ls /tmp/mpvSockets/* >/dev/null 2>&1; then
+    echo "No mpv socket files found"
+    exit 0
+fi
+
+# Iterate through each socket file and send pause command
+for socket in /tmp/mpvSockets/*; do
+    # Verify the socket file exists (extra safety)
+    if [ -S "$socket" ]; then
+        echo "Pausing mpv instance: $socket"
+        echo '{ "command": ["set_property", "pause", true] }' | socat - "$socket"
+    else
+        echo "Warning: $socket is not a valid socket"
+    fi
+done
+
+echo "Finished pausing all mpv instances"

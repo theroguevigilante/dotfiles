@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# This is a wrapper script for lf that allows it to create image previews with
+# ueberzug. This works in concert with the lf configuration file and the
+# lf-cleaner script.
+
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    command lf "$@"
+    exit $?
+fi
+
+[ ! -d "$HOME/.cache/lf" ] && mkdir -p "$HOME/.cache/lf"
+export FIFO_UEBERZUG="$HOME/.cache/lf/ueberzug-$$"
+
+rm -f "$FIFO_UEBERZUG" 2>/dev/null
+mkfifo "$FIFO_UEBERZUG"
+
+ueberzugpp layer -s -p json < "$FIFO_UEBERZUG" &
+UB_PID=$!
+exec 3> "$FIFO_UEBERZUG"
+
+# Ugly subshell fix for impolite closure
+(
+    trap '' HUP INT TERM QUIT EXIT
+    tail --pid=$$ -f /dev/null 2>/dev/null
+    kill -9 $UB_PID 2>/dev/null
+    rm -f "$FIFO_UEBERZUG" 2>/dev/null
+) &
+WATCHER_PID=$!
+
+command lf "$@" 3>&-
+
+exec 3>&-
+kill -9 $UB_PID 2>/dev/null
+kill -9 $WATCHER_PID 2>/dev/null
+rm -f "$FIFO_UEBERZUG" 2>/dev/null

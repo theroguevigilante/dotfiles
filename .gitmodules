@@ -1,0 +1,3 @@
+[submodule "local/.local/bin/sweetscripts"]
+	path = local/.local/bin/sweetscripts
+	url = https://github.com/theroguevigilante/sweetscripts
