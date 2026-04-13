@@ -1,0 +1,11 @@
+[user]
+	email = naimish82@proton.me
+	name = theroguevigilante
+	signingkey = 842A5AC4D7505C89
+[init]
+	defaultBranch = master
+[pull]
+	rebase = false
+[core]
+	editor = nvim
+[commit]
