@@ -5,6 +5,8 @@
 
 # Add all directories in `~/.local/bin` to $PATH
 export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
+export PATH="$PATH:$(find ~/dotfiles/local/.local/bin/ -type d | paste -sd ':' -)"
+export PATH=~/.npm-global/bin:$PATH
 
 unsetopt PROMPT_SP 2>/dev/null
 
@@ -12,7 +14,7 @@ unsetopt PROMPT_SP 2>/dev/null
 export EDITOR="nvim"
 export TERMINAL="st"
 export TERMINAL_PROG="st"
-export BROWSER="zen-bin"
+export BROWSER="zen-browser"
 
 # Change the default crypto/weather monitor sites.
 # export CRYPTOURL="rate.sx"

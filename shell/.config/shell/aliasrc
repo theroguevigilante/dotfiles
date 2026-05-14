@@ -61,6 +61,11 @@ alias \
 
 # My alias
 alias \
-    neofetch="fastfetch"
+    neofetch="fastfetch" \
+    makecv="pdflatex $HOME/code-playground/Project-Showcase/Naimish_Pandey_Mother_CV.tex && rm -f *.aux *.log *.out"
 
-alias game-mode="sudo game-mode"
+alias game-mode="sudo $HOME/.local/bin/sweetscripts/game-mode"
+alias togpu="sudo $HOME/.local/bin/sweetscripts/togpu"
+
+alias start-intel='startx ~/.config/x11/xinitrc.intel'
+alias start-nv='startx ~/.config/x11/xinitrc.nvidia'
